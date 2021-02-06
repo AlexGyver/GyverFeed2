@@ -15,9 +15,11 @@ const byte feedTime[][2] = {
   {21, 0},
 };
 
-#define EE_RESET 12        // любое число 0-255. Измени, чтобы сбросить настройки и обновить время
-#define FEED_SPEED 3000    // задержка между шагами мотора (мкс)
-#define BTN_PIN 2         // кнопка
+#define EE_RESET 12         // любое число 0-255. Измени, чтобы сбросить настройки и обновить время
+#define FEED_SPEED 3000     // задержка между шагами мотора (мкс)
+#define BTN_PIN 2           // кнопка
+#define STEPS_FRW 18        // шаги вперёд
+#define STEPS_BKW 10        // шаги назад
 const byte drvPins[] = {3, 4, 5, 6};  // драйвер (фазаА1, фазаА2, фазаВ1, фазаВ2)
 
 // =========================================================
@@ -76,8 +78,8 @@ void feed() {
 
 void oneRev() {
   static uint16_t val = 0;
-  for (byte i = 0; i < 18; i++) runMotor(val++);
-  for (byte i = 0; i < 10; i++) runMotor(val--);
+  for (byte i = 0; i < STEPS_FRW; i++) runMotor(val++);
+  for (byte i = 0; i < STEPS_BKW; i++) runMotor(val--);
 }
 
 void runMotor(int thisStep) {
