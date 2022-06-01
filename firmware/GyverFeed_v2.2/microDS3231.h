@@ -6,7 +6,7 @@
     - Чтение и запись времени
     - Вывод в char* и String
     - Чтение температуры датчика
-    
+
     Egor 'Nich1con' Zakharov & AlexGyver, alex@alexgyver.ru
     https://alexgyver.ru/
     MIT License
